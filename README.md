@@ -45,6 +45,7 @@ With Catalog, you can
 	2. If you get a PDO exception stating that your user is not privileged to create the database, head over to your PHPMyAdmin or CPanel and create the database manually. Then enter the name of the database to the setup.
 	3. Please bear in mind, that the database name may only contain fhe following characters: `0-9`, `a-z`, `A-Z`, `$`, `_`.
 6. Click the button and you're done. Have fun.
+7. (See also: [catalog_load-data](https://github.com/psztrnk/catalog_load-data))
 
 ## Roadmap
 
