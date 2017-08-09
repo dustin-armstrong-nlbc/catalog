@@ -1,0 +1,768 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input.add-item-input[type=number]::-webkit-inner-spin-button, input.add-item-input[type=number]::-webkit-outer-spin-button
+	{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
+}
+
+/* ---------------------------- SETUP --------------------------------*/
+section#setup {
+	width: 90%;
+	max-width: 400px;
+	margin: 100px auto 0 auto;
+	text-align: left;
+}
+
+section#setup h1 {
+	text-align: center;
+	font-size: 3em;
+	font-weight: bold;
+	margin: 0 auto 1em auto;
+}
+
+section#setup p {
+	margin: 40px auto;
+	text-align: left !important;
+}
+
+section#setup label {
+	display: block;
+	width: 100%;
+	text-transform: uppercase;
+	margin: 0 auto .5em auto;
+}
+
+section#setup label span {
+	color: #9c9c9c;
+	font-size: .85em;
+}
+
+section#setup input {
+	display: block;
+	width: 88%;
+	padding: 8px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 0 auto 1em 0;
+}
+
+section#setup select {
+	display: block;
+	width: 92%;
+	padding: 8px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 0 auto 1em 0;
+}
+
+section#setup input#password, section#setup input#apppassword {
+	width: 88%;
+}
+
+section#setup input.loginbutton {
+	display: block;
+	width: 92.5%;
+	padding: 8px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 0 auto 1em 0;
+}
+
+section#setup i.fa {
+	float: right;
+	display: block;
+	margin: 10px 0 0 0;
+	cursor: pointer;
+}
+
+a.finish-setup {
+	display: block;
+	width: auto;
+	padding: 8px 12px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 1em 1em 1em 0;
+	font-weight: bold;
+	color: #222;
+	background: #ddd;
+	text-decoration: none;
+}
+
+a.finish-setup:hover {
+	background: #E0EEEE;
+}
+
+/* ---------------------------- APPLICATION --------------------------*/
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #fefefe;
+	color: #222;
+	font-family: sans-serif;
+	font-size: .9em;
+	line-height: 175%;
+	text-align: center;
+}
+
+div#item-list p {
+	margin: 0 auto .5em auto;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+div.clear {
+	clear: both;
+}
+
+hr.footer {
+	border: none;
+	border-bottom: 1px solid #E0EEEE;
+	margin: 3em 0 2em 0;
+}
+
+header#app-header {
+	display: block;
+	margin: 3% auto;
+	width: 90%;
+	min-width: 240px;
+	max-width: 960px;
+	padding: 0 5%;
+}
+
+header#app-header h1 {
+	font-size: 1.6em;
+	font-weight: bold;
+	margin: 3px .2em 1em auto;
+	float: left;
+}
+
+section#menu ul {
+	float: right;
+}
+
+section#menu ul li {
+	list-style: none;
+	display: inline-block;
+	text-transform: uppercase;
+	margin: 6px 0 0 20px;
+	color: #9c9c9c;
+}
+
+section#menu li i {
+	float: left;
+	margin: 5px 3px 0 0;
+}
+
+section#menu a {
+	text-decoration: none;
+	color: #9c9c9c;
+}
+
+section#menu a:hover, section#menu li.active, section#menu li.active a {
+	text-decoration: none;
+	color: #222;
+}
+
+section#content-area {
+	display: block;
+	width: 90%;
+	max-width: 960px;
+	margin: 3em auto;
+	text-align: left;
+	padding: 0 5%;
+}
+
+section#content-area h2 {
+	font-size: 1.6em;
+	font-weight: bold;
+	margin: 1em auto;
+}
+
+section#content-area h2 i {
+	display: block;
+	float: right;
+	margin: 2px 0 0 0;
+}
+
+div#global-search {
+	width: 100%;
+	margin: 0 auto 3em auto;
+}
+
+div#global-search input.searchform {
+	display: block;
+	width: 92%;
+	padding: 7px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 0 1% 1em 0;
+	float: left;
+}
+
+div#global-search input.searchbutton {
+	display: block;
+	width: 23%;
+	padding: 7px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 1em auto 1em 0;
+	font-weight: bold;
+}
+
+div#global-search input.searchbutton:hover {
+	background: #E0EEEE;
+}
+
+div#global-search button {
+	background: #E0EEEE;
+	border: 1px solid #ccc;
+	padding: 7px 0;
+	border-radius: 4px;
+	width: 5%;
+	min-width: 40px;
+}
+
+@
+-moz-document url-prefix () {div #global-search button {
+	padding: 6px0;
+}
+
+}
+div#item-list {
+	width: 100%;
+	margin: 1em auto;
+}
+
+table.item-list-table {
+	width: 100%;
+	margin: 2em 0;
+	border: 1px solid #fefefe;
+	border-radius: 8px;
+}
+
+table.item-list-table thead {
+	background: #E0EEEE;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 0px #efefef;
+	font-weight: bold;
+	border-bottom: 2px solid #222;
+}
+
+table.item-list-table tr:nth-child(even) {
+	background: #E0EEEE;
+}
+
+table.item-list-table td, table.item-list-table th {
+	padding: 6px;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	word-wrap: wrap;
+	text-align: left;
+	vertical-align: middle;
+}
+
+table.item-list-table td.lent {
+	text-align: center;
+}
+
+table.item-list-table th {
+	cursor: pointer;
+}
+
+table.item-list-table th i {
+	color: #9c9c9c;
+	font-size: .7em;
+	display: block;
+	width: 10px;
+	float: left;
+	vertical-align: baseline;
+	margin: 8px 0 0 0;
+}
+
+table.item-list-table th:hover i {
+	color: #222;
+}
+
+table.item-list-table td a {
+	color: #222;
+	text-decoration: none;
+}
+
+table.item-list-table td a:hover {
+	color: #222;
+	text-decoration: none;
+	border-bottom: 1px #222 dotted;
+}
+
+i.fa-times {
+	color: #9c9c9c;
+}
+
+a.nextpage {
+	float: right;
+	color: #222;
+	text-decoration: none;
+	border-bottom: 1px #fefefe solid;
+}
+
+a.prevpage {
+	float: left;
+	color: #222;
+	text-decoration: none;
+	border-bottom: 1px #fefefe solid;
+}
+
+a.prevpage:hover, a.nextpage:hover {
+	border-bottom: 1px #222 dotted;
+}
+
+div#item-list ul a, div#item-list p a {
+	color: #222;
+	text-decoration: none;
+	border-bottom: 1px #222 dotted;
+}
+
+div#item-list ul.moly_list {
+	list-style: circle;
+	margin: auto 0 1em 2em;
+}
+
+div#item-list code, div#item-list pre {
+	font-family: monospace;
+	font-size: 130%;
+	background: #E0EEEE;
+	padding: 0 3px;
+}
+
+/* ---------------------------- ADD NEW ITEM --------------------------*/
+label.add-new-item {
+	display: block;
+	width: 100%;
+	text-transform: uppercase;
+	margin: 0 auto .5em auto;
+}
+
+label.add-new-item span {
+	color: #9c9c9c;
+	font-size: .85em;
+}
+
+label.add-new-item i {
+	display: block;
+	width: 20px;
+	float: left;
+	margin: 5px 5px 0 0;
+}
+
+input.add-item-input {
+	display: block;
+	width: 98%;
+	padding: 1%;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 0 auto 1em 0;
+}
+
+div.book-lent {
+	margin: 1.5em 0;
+}
+
+.showHideCheck {
+	display: none;
+}
+
+.showHideCheck+label {
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px
+		rgba(0, 0, 0, 0.05);
+	padding: 8px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+	float: left;
+	margin: 3px 10px 0 0;
+}
+
+.showHideCheck+label:active, .showHideCheck:checked+label:active {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px
+		rgba(0, 0, 0, 0.1);
+}
+
+.showHideCheck:checked+label {
+	background-color: #e9ecee;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px
+		rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+	color: #99a1a7;
+}
+
+.showHideCheck:checked+label:after {
+	content: '\2714';
+	font-size: 12px;
+	position: absolute;
+	top: -3px;
+	left: 4px;
+	color: #99a1a7;
+}
+
+div.hiddenInput, div.showLending {
+	margin: 1em 0 0 0;
+}
+
+textarea.add-item-input {
+	display: block;
+	width: 98%;
+	padding: 1%;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 0 auto 1em 0;
+	min-height: 10em;
+	font-family: sans-serif;
+	font-size: .94em;
+	line-height: 150%;
+}
+
+input.add-item-submit {
+	display: block;
+	width: 33%;
+	padding: 7px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 1em auto 1em 0;
+	font-weight: bold;
+	float: right;
+}
+
+input.add-item-submit:hover {
+	background: #E0EEEE;
+	cursor: pointer;
+}
+
+p.helper {
+	display: block;
+	padding: 8px;
+	color: #222;
+	background: #E0EEEE;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 2em 0 !important;
+	font-weight: bold;
+}
+
+/* --------------------- VIEW SINGE ITEM --------------------------*/
+div.cover {
+	display: block;
+	float: right;
+	border: 1px solid #9c9c9c;
+	padding: 5px 5px 0px 5px;
+}
+
+div.cover img {
+	max-height: 250px;
+	width: auto;
+	margin: 0;
+}
+
+label.view-item-label {
+	display: block;
+	width: 100%;
+	text-transform: uppercase;
+	margin: 0 auto .5em auto;
+	color: #9c9c9c;
+}
+
+label.view-item-label i {
+	display: block;
+	width: 20px;
+	float: left;
+	margin: 5px 5px 0 0;
+	color: #9c9c9c;
+}
+
+p.view-item-info {
+	display: block;
+	width: 100%;
+}
+
+p.view-item-info a {
+	color: #222;
+	text-decoration: none;
+	border-bottom: 1px #222 dotted;
+}
+
+p.view-item-info a:hover {
+	border-bottom: 0 none;
+}
+
+a.item-action {
+	display: block;
+	float: right;
+	padding: 0;
+	margin: 0 0 0 10px;
+	text-decoration: none;
+	color: #222;
+}
+
+a.delete {
+	margin: -1px 0 0 8px;
+}
+
+a.delete:hover {
+	color: red;
+}
+
+/* --------------------- DELETE ITEM -------------------------*/
+ul.delete {
+	margin: 20px 0;
+	padding: 2%;
+	border: 1px solid #9c9c9c;
+	background: #E0EEEE;
+	border-radius: 4px;
+}
+
+a.delete-button {
+	display: block;
+	width: auto;
+	padding: 8px 12px;
+	border: 1px solid #222;
+	border-radius: 4px;
+	margin: 1em 1em 1em 0;
+	font-weight: bold;
+	float: left;
+	color: #fefefe;
+	background: red;
+	text-decoration: none;
+}
+
+a.delete-button:hover {
+	background: #222;
+}
+
+a.cancel-button {
+	display: block;
+	width: auto;
+	padding: 8px 12px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 1em 1em 1em 0;
+	font-weight: bold;
+	float: left;
+	color: #222;
+	background: #ddd;
+	text-decoration: none;
+}
+
+a.cancel-button:hover {
+	background: #E0EEEE;
+}
+
+input.cancel-this {
+	margin-right: 1.5em;
+}
+
+/* --------------------- VIEW LISTS --------------------------*/
+ul#author-list a, ul#genre-list a, ul#publisher-list a {
+	color: #222;
+	text-decoration: none;
+	border-bottom: 1px #222 dotted;
+}
+
+ul#author-list a:hover, ul#genre-list a:hover, ul#publisher-list a:hover
+	{
+	border-bottom: 0 none;
+}
+
+/* --------------------- IMPORT --------------------------*/
+input.isbn {
+	display: block;
+	width: 63%;
+	padding: 8px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 0 1% 1em 0;
+	float: left;
+}
+
+input.isbn-submit {
+	display: block;
+	width: 33%;
+	padding: 7px;
+	border: 1px solid #9c9c9c;
+	border-radius: 4px;
+	margin: 1em auto 1em 0;
+	font-weight: bold;
+}
+
+input.isbn-submit:hover {
+	background: #E0EEEE;
+}
+
+/* --------------------- HELP PAGE --------------------------*/
+h3 {
+	font-size: 1.3em;
+	font-weight: bold;
+	margin: 2em 0 1em 0;
+}
+
+div#item-list ul.help {
+	list-style: circle;
+	margin: auto 0 1em 2em;
+}
+
+div.help a {
+	color: #222;
+	text-decoration: none;
+	border-bottom: 1px #222 dotted;
+}
+
+div.help a:hover {
+	border-bottom: 0 none !important;
+}
+
+div#paypal-donate {
+	margin: 1em 0 3em 0;
+}
+
+div.help-link {
+	display: block;
+	margin: 1em 0 0 0;
+}
+
+div.help-link a {
+	color: #9c9c9c;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+div.help-link a:hover {
+	color: #222;
+}
+
+/* --------------------- @MEDIA QUERIES --------------------------*/
+@media screen and (max-width: 1080px) {
+	header#app-header h1 span {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 959px) {
+	header#app-header section#menu span {
+		display: none;
+	}
+	header#app-header h1 span {
+		display: none;
+	}
+	table.item-list-table th.publisher, table.item-list-table td.publisher,
+		table.item-list-table th.year, table.item-list-table td.year, table.item-list-table th.lent,
+		table.item-list-table td.lent {
+		display: none;
+	}
+	div.cover {
+		display: block;
+		float: right;
+		border: 1px solid #9c9c9c;
+		padding: 5px 5px 0px 5px;
+	}
+	div.cover img {
+		max-width: 150px;
+		height: auto: auto;
+		margin: 0;
+	}
+	div#global-search input.searchform {
+		width: 86%;
+	}
+}
+
+@media screen and (max-width: 479px) {
+	header#app-header span {
+		display: none;
+	}
+	header#app-header h1 {
+		margin: 3px 5px 1em auto;
+	}
+	section#menu ul li {
+		margin: 6px 0 0 10px;
+	}
+	section#content-area h2 {
+		font-size: 1.2em;
+	}
+	section#content-area h2 i {
+		margin: 5px 0 0 0;
+	}
+	table.item-list-table th.publisher, table.item-list-table td.publisher,
+		table.item-list-table th.year, table.item-list-table td.year, table.item-list-table th.genre,
+		table.item-list-table td.genre, table.item-list-table th.lent, table.item-list-table td.lent
+		{
+		display: none;
+	}
+	div.cover {
+		display: block;
+		float: right;
+		border: 1px solid #9c9c9c;
+		padding: 5px 5px 0px 5px;
+	}
+	div.cover img {
+		max-width: 80px;
+		height: auto: auto;
+		margin: 0;
+	}
+	div#global-search input.searchform {
+		width: auto;
+	}
+}
