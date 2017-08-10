@@ -181,7 +181,7 @@ if (strpos($id, 'id=') !== FALSE) {
 				<input type="text" class="add-item-input" name="lentto"
 					value="<?php echo $item->lentto() ?>"> <label class="add-new-item"><i
 					class="fa fa-calendar-check-o" aria-hidden="true"></i> <?php echo $lang['ADD_LENTAT_LABEL'] ?></label>
-				<input type="date" class="add-item-input" name="lentat"
+				<input type="text" class="add-item-input" name="lentat"
 					value="<?php echo $item->lentat() ?>">
 			</div>
 		</div>
