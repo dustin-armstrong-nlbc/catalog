@@ -4,8 +4,17 @@
 $collection = $db->table('books');
 
 $url = $_SERVER['REQUEST_URI'];
-$max = $collection->count();
-$bookid = rand(1, $max);
+$books = $collection->select('id')->all();
+$max = count($books)-1;
+$random = rand(0, $max);
+$i = 0;
+foreach ($books as $book) {
+	$bookid = $book->id();
+	$i++;
+	if ($i == $random) { 
+		break; 
+	}
+}
 $item = $collection->find($bookid);
 ?>
 
