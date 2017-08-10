@@ -150,7 +150,7 @@ if (isset($_POST['submit'])) { // check if form was submitted
 				<input type="text" class="add-item-input" name="lentto"> <label
 					class="add-new-item"><i class="fa fa-calendar-check-o"
 					aria-hidden="true"></i> <?php echo $lang['ADD_LENTAT_LABEL'] ?></label>
-				<input type="date" class="add-item-input" name="lentat">
+				<input type="text" class="add-item-input" name="lentat">
 			</div>
 		</div>
 
