@@ -1,10 +1,13 @@
-﻿<?php
+<?php
 $lang = array();
 
 // singulars and plurals
 
 $lang['BOOK_SINGULAR'] = 'könyv';
 $lang['BOOK_PLURAL'] = 'könyv';
+
+$lang['EBOOK_SINGULAR'] = 'e-könyv';
+$lang['EBOOK_PLURAL'] = 'e-könyv';
 
 $lang['ITEM_SINGULAR'] = '';
 $lang['ITEM_PLURAL'] = '';
@@ -39,6 +42,7 @@ $lang['MENU_AUTHORS'] = 'Szerzők';
 $lang['MENU_PUBLISHERS'] = 'Kiadók';
 $lang['MENU_GENRES'] = 'Műfajok';
 $lang['MENU_LENT'] = 'Kölcsönben';
+$lang['MENU_EBOOKS'] = 'E-könyvek';
 $lang['MENU_LOGOUT'] = 'Kilépés';
 
 // searchform
@@ -64,6 +68,8 @@ $lang['ADD_LENTTO_LABEL'] = 'Neki adtam kölcsön';
 $lang['ADD_LENTAT_LABEL'] = 'Ekkor adtam kölcsön';
 $lang['ADD_ADDBUTTON'] = 'Könyv hozzáadása';
 $lang['ADD_CANCELBUTTON'] = 'Mégsem';
+$lang['ADD_IFEBOOK_LABEL'] = 'Ez egy E-könyv';
+$lang['ADD_EBOOK_LABEL'] = 'E-könyv feltöltése <span>(nem kötelező)</span>';
 
 // authors' list
 
@@ -92,6 +98,7 @@ $lang['DISPLAY_LOCATION_LABEL'] = 'Könyv helye';
 $lang['DISPLAY_LENT_NOTE'] = 'Ezt a könyvet kölcsönadtad';
 $lang['DISPLAY_LENTTO_REF'] = ' neki: ';
 $lang['DISPLAY_LENTAT_REF'] = ', ekkor: ';
+$lang['DISPLAY_EBOOK_TITLE_PREFIX'] = 'E-könyv: ';
 
 // display author
 
@@ -128,10 +135,21 @@ $lang['DISPLAY_YEAR_OWN'] = 'A gyűjteményedben ';
 $lang['DISPLAY_YEAR_PUBLISHEDIN'] = ' van, amelyet ';
 $lang['DISPLAY_YEAR_SUFFIX'] = ' évben adtak ki.';
 
+// display ebooks
+
+$lang['DISPLAY_EBOOK_TITLE'] = 'E-könyvek';
+$lang['DISPLAY_EBOOK_PREFIX'] = 'Összesen ';
+$lang['DISPLAY_EBOOK_SUFFIX'] = ' van a gyűjteményedben.';
+
 // edit item
 
 $lang['EDIT_TITLE'] = 'Könyv szerkesztése';
 $lang['EDIT_SAVEBUTTON'] = 'Mentés';
+$lang['EDIT_EBOOK_CURRENTFILE'] = 'Jelenlegi e-könyv fájl';
+$lang['EDIT_EBOOK_NOCURRENTFILE'] = 'Nincs fájl.';
+$lang['EDIT_EBOOK_ADDNEWFILE'] = 'Új e-könyv fájl feltöltése';
+$lang['MODIFIED_SUCCESS'] = 'Köny adatai sikeresen módosítva. ';
+$lang['MODIFIED_SUCCESS_REDIRECT'] = 'Tovább a könyv adatlapjához';
 // for form labels, see "add new item" strings
 
 // find on Moly.hu
