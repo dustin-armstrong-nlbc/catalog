@@ -6,6 +6,9 @@ $lang = array();
 $lang['BOOK_SINGULAR'] = 'book';
 $lang['BOOK_PLURAL'] = 'books';
 
+$lang['EBOOK_SINGULAR'] = 'ebook';
+$lang['EBOOK_PLURAL'] = 'ebooks';
+
 $lang['ITEM_SINGULAR'] = 'item';
 $lang['ITEM_PLURAL'] = 'items';
 
@@ -39,6 +42,7 @@ $lang['MENU_AUTHORS'] = 'Authors';
 $lang['MENU_PUBLISHERS'] = 'Publishers';
 $lang['MENU_GENRES'] = 'Genres';
 $lang['MENU_LENT'] = 'Lent books';
+$lang['MENU_EBOOKS'] = 'Ebooks';
 $lang['MENU_LOGOUT'] = 'Logout';
 
 // searchform
@@ -64,6 +68,8 @@ $lang['ADD_LENTTO_LABEL'] = 'Lent to';
 $lang['ADD_LENTAT_LABEL'] = 'Lent at';
 $lang['ADD_ADDBUTTON'] = 'Add New Item';
 $lang['ADD_CANCELBUTTON'] = 'Cancel';
+$lang['ADD_IFEBOOK_LABEL'] = 'This is an Ebook';
+$lang['ADD_EBOOK_LABEL'] = 'Upload Ebook file <span>(optional)</span>';
 
 // authors' list
 
@@ -92,6 +98,7 @@ $lang['DISPLAY_LOCATION_LABEL'] = 'Location';
 $lang['DISPLAY_LENT_NOTE'] = 'You\'ve lent this book';
 $lang['DISPLAY_LENTTO_REF'] = ' to ';
 $lang['DISPLAY_LENTAT_REF'] = ' on ';
+$lang['DISPLAY_EBOOK_TITLE_PREFIX'] = 'Ebook: ';
 
 // display author
 
@@ -128,10 +135,21 @@ $lang['DISPLAY_YEAR_OWN'] = 'You own ';
 $lang['DISPLAY_YEAR_PUBLISHEDIN'] = ' published in ';
 $lang['DISPLAY_YEAR_SUFFIX'] = '.';
 
+// display ebooks
+
+$lang['DISPLAY_EBOOK_TITLE'] = 'Ebooks';
+$lang['DISPLAY_EBOOK_PREFIX'] = 'You have ';
+$lang['DISPLAY_EBOOK_SUFFIX'] = ' in your collection.';
+
 // edit item
 
 $lang['EDIT_TITLE'] = 'Edit item';
 $lang['EDIT_SAVEBUTTON'] = 'Save';
+$lang['EDIT_EBOOK_CURRENTFILE'] = 'Current Ebook file';
+$lang['EDIT_EBOOK_NOCURRENTFILE'] = 'No file.';
+$lang['EDIT_EBOOK_ADDNEWFILE'] = 'Add new Ebook file';
+$lang['MODIFIED_SUCCESS'] = 'Item successfully modified. ';
+$lang['MODIFIED_SUCCESS_REDIRECT'] = 'Go back to the item';
 // for form labels, see "add new item" strings
 
 // find on Moly.hu
