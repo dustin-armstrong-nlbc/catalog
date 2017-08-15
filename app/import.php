@@ -51,7 +51,7 @@ if (! $bbi) {
     ?>
 </p>
 
-	<form action="add" method="post">
+	<form action="add" method="post" enctype="multipart/form-data">
 
 		<label class="add-new-item"><i class="fa fa-user" aria-hidden="true"></i>
 			<?php echo $lang['ADD_AUTHOR_LABEL'] ?></label> <input
@@ -83,6 +83,18 @@ if (! $bbi) {
 		<label class="add-new-item"><i class="fa fa-compass"
 			aria-hidden="true"></i><?php echo $lang['ADD_LOCATION_LABEL'] ?></label>
 		<input class="add-item-input" type="text" name="location" />
+
+        <div class="book-ebook">
+            <input type="checkbox" name="isebook" id="ifebook"
+                class="showHideCheck_ebook" /><label for="ifebook"></label> <label
+                class="add-new-item"><?php echo $lang['ADD_IFEBOOK_LABEL'] ?></label>
+
+            <div class="hiddenInput_ebook">
+                <label class="add-new-item"><i class="fa fa-upload"
+                    aria-hidden="true"></i> <?php echo $lang['ADD_EBOOK_LABEL'] ?></label>
+                <input class="upload" type="file" name="files[]" />
+            </div>
+        </div>
 
 		<div class="book-lent">
 			<input type="checkbox" name="islent" id="iflent"
