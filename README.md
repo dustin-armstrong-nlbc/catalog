@@ -25,6 +25,7 @@ With Catalog, you can
 	- years of publishing,
 	- genres and 
 	- lent status;
+- manage your ebooks with ebook file upload;
 - search your collection based on all fields (simple search) or only certain fields (smart search);
 - protect your data from unwanted eyes with built-in authentication;
 - Hungarian users are also able to import Hungarian books' data from the Moly website (Moly API Key required).
@@ -39,6 +40,7 @@ With Catalog, you can
 1. Download and unpack the `.zip` or clone this repository.
 2. Rename the top level folder to your liking (eg. `catalog`).
 3. Upload the folder to the desired location on your web server.
+	1. Make sure that your `ebooks` folder's permissions are set to `755`.
 4. Visit the folder in your browser (eg. `http://example.com/catalog`).
 5. Follow the on-screen instructions.
 	1. You don't need to create the database before intallation. Catalog will create it for you with all the necessary tables, if the user you specified has the sufficient previleges.
@@ -50,8 +52,8 @@ With Catalog, you can
 ## Roadmap
 
 If developed further, the below features will be implemented to future versions of Catalog.
-- Ebook management. Implementing a `doctype`, possibly an upload functionality for ebook files. Would be nice to have a remote backup of my ebooks along with their data (Catalog already has blank columns in the database for this).
-- Multi-user. Currently I don't really see the point in a multi-user application, but who knows. Catalog already has an unused `owner` column in the database.
+- [x] Ebook management. Implementing a `doctype`, possibly an upload functionality for ebook files. Would be nice to have a remote backup of my ebooks along with their data (Catalog already has blank columns in the database for this).
+- [ ] Multi-user. Currently I don't really see the point in a multi-user application, but who knows. Catalog already has an unused `owner` column in the database.
 
 ## Third-party code
 
@@ -59,6 +61,7 @@ If developed further, the below features will be implemented to future versions 
 - Catalog uses [jQuery](https://github.com/jquery/jquery) created by the JS Foundation and available under the MIT License.
 - Catalog uses [jQuery.fn.sortElements](https://github.com/padolsey-archive/jquery.fn/tree/master/sortElements) by James Padolsey, available under the Public Domain (unlicense).
 - Catalog uses [Font Awesome](http://fontawesome.io/) icons cerated by Dave Gandy and available under the SIL Open Font License/MIT License.
+- Catalog uses [php-fileupload-class](https://github.com/lodev09/php-fileupload-class) written by Jovanni Lo and available under the MIT License.
 
 For licensing information of the above third-party components please see `THIRDPARTYREADME.md`.
 
