@@ -16,8 +16,15 @@ if (strpos($id, 'id=') !== FALSE) {
 		class="fa fa-trash" aria-hidden="true"></i></a> <a
 		class="item-action edit" href="edit?<?php echo $id; ?>"><i
 		class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+		<?php if ($item->doctype() == 'ebook'  && $item->bookfile() != NULL) { ?>
+			<a class="item-action download" href="ebooks/<?php echo $item->bookfile() ?>"><i class="fa fa-download" aria-hidden="true"></i></a>
 
-					<?php echo $item->title(); ?>
+					<?php }
+						if ($item->doctype() == 'ebook') { 
+							echo $lang['DISPLAY_EBOOK_TITLE_PREFIX'];
+						}
+						echo $item->title();
+					?>
 				</h2>
 
 <div id="item-list">
@@ -108,6 +115,9 @@ if (strpos($id, 'id=') !== FALSE) {
 } else if (strpos($id, 'lent=on') !== FALSE) {
     
     include_once ('display-lent.php');
+} else if (strpos($id, 'doctype=ebook') !== FALSE) {
+    
+    include_once ('display-ebooks.php');
 }
 ?>
 
