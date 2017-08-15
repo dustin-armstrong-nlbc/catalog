@@ -80,8 +80,8 @@ if (logged_in() == false) {
 					class="menu lent <?php if(strpos($path, 'lent') !== FALSE) { echo 'active'; } ?>"><a
 					href="./display?lent=on"><i class="fa fa-handshake-o"
 						aria-hidden="true"></i><span><?php echo $lang['MENU_LENT']; ?></span></a></li>
-				<li class="menu logout"><a href="logout"><i class="fa fa-sign-out"
-						aria-hidden="true"></i> <span><?php echo $lang['MENU_LOGOUT']; ?></span></a></li>
+				<li class="menu ebooks <?php if(strpos($path, 'ebook') !== FALSE) { echo 'active'; } ?>"><a href="./display?doctype=ebook"><i class="fa fa-plug"
+						aria-hidden="true"></i> <span><?php echo $lang['MENU_EBOOKS']; ?></span></a></li>
 			</ul>
 			<div class="clear"></div>
 		</section>
