@@ -418,7 +418,8 @@ input.add-item-input {
 	margin: 0 auto 1em 0;
 }
 
-div.book-lent {
+div.book-lent,
+div.book-ebook {
 	margin: 1.5em 0;
 }
 
@@ -461,7 +462,46 @@ div.book-lent {
 	color: #99a1a7;
 }
 
-div.hiddenInput, div.showLending {
+.showHideCheck_ebook {
+	display: none;
+}
+
+.showHideCheck_ebook+label {
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px
+		rgba(0, 0, 0, 0.05);
+	padding: 8px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+	float: left;
+	margin: 3px 10px 0 0;
+}
+
+.showHideCheck_ebook+label:active, .showHideCheck_ebook:checked+label:active {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px
+		rgba(0, 0, 0, 0.1);
+}
+
+.showHideCheck_ebook:checked+label {
+	background-color: #e9ecee;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px
+		rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+	color: #99a1a7;
+}
+
+.showHideCheck_ebook:checked+label:after {
+	content: '\2714';
+	font-size: 12px;
+	position: absolute;
+	top: -3px;
+	left: 4px;
+	color: #99a1a7;
+}
+
+div.hiddenInput, div.showLending, div.hiddenInput_ebook {
 	margin: 1em 0 0 0;
 }
 
@@ -692,6 +732,10 @@ div.help-link a {
 
 div.help-link a:hover {
 	color: #222;
+}
+
+div.help-link span.logout-link {
+	float: right;
 }
 
 /* --------------------- @MEDIA QUERIES --------------------------*/
