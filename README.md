@@ -57,6 +57,7 @@ With Catalog, you can
 
 If developed further, the below features will be implemented to future versions of Catalog.
 - [x] Ebook management. Implementing a `doctype`, possibly an upload functionality for ebook files. Would be nice to have a remote backup of my ebooks along with their data (Catalog already has blank columns in the database for this).
+- [ ] Import for books in English (or other languages). While Moly import handles Hungarian books, I'm still to find a proper source for books in other languages (WorldCat? Goodreads? Google Books? Other?). If you have suggestions, don't keep it for yourself.
 - [ ] Multi-user. Currently I don't really see the point in a multi-user application, but who knows. Catalog already has an unused `owner` column in the database.
 
 ## Third-party code
