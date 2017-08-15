@@ -6,7 +6,52 @@
 <div id="item-list">
 
 <?php
+
+require_once('lib/class.file.php');
+require_once('lib/class.upload.php');
+
 if (isset($_POST['submit'])) { // check if form was submitted
+
+if (isset($_FILES['files'])) {
+    $validations = array(
+        'category' => array('ebook'), // validate only those files within this list
+        'size' => 20 // maximum of 20mb
+    );
+
+    // create new instance
+    $upload = new Upload($_FILES['files'], $validations);
+
+    // for each file
+    foreach ($upload->files as $file) {
+        if ($file->validate()) {
+            // do your thing on this file ...
+            // ...
+            // say we don't allow audio files
+            if ($file->is('audio')) $error = 'Audio not allowed';
+            else {
+                // then get base64 encoded string to do something else ...
+                $filedata = $file->get_base64();
+
+                // or get the GPS info ...
+                $gps = $file->get_exif_gps();
+
+                // then we move it to 'path/to/my/uploads'
+                $result = $file->put('./ebooks');
+                $error = $result ? '' : 'Error moving file';
+            }
+            
+        } else {
+            // oopps!
+            $error = $file->get_error();
+        }
+        $filename = $file->name;
+        // echo $file->name.' - '.($error ? ' [FAILED] '.$error : ' Succeeded!');
+        // echo '<br />'; 
+    }
+}
+
+
+// =========================== UPLOAD
     
     $collection = $db->table('books');
     
@@ -20,6 +65,11 @@ if (isset($_POST['submit'])) { // check if form was submitted
     $insert_imgpath = $_POST['imgpath'];
     $insert_location = $_POST['location'];
     $insert_owner = $_SESSION['user_id'];
+    if(isset($filename)) {
+        $insert_filename = $filename;
+    } else {
+        $insert_filename = NULL;
+    }
     
     if (isset($_POST['islent'])) {
         
@@ -40,7 +90,8 @@ if (isset($_POST['submit'])) { // check if form was submitted
             'lentat' => $insert_lentat,
             'a_str' => $insert_author,
             'g_str' => $insert_genre,
-            'owner' => $insert_owner
+            'owner' => $insert_owner,
+            'bookfile' => $insert_filename
         
         ))) {
             
@@ -48,21 +99,43 @@ if (isset($_POST['submit'])) { // check if form was submitted
         }
     } else {
         
-        if ($id = $collection->insert(array(
-            'title' => $insert_title,
-            'isbn' => $insert_isbn,
-            'publisher' => $insert_publisher,
-            'year' => $insert_year,
-            'description' => $insert_description,
-            'imgpath' => $insert_imgpath,
-            'location' => $insert_location,
-            'a_str' => $insert_author,
-            'g_str' => $insert_genre,
-            'owner' => $insert_owner
-        
-        ))) {
-            
-            $bookid = $id;
+        if (!isset($_POST['isebook'])) {
+            if ($id = $collection->insert(array(
+                'title' => $insert_title,
+                'isbn' => $insert_isbn,
+                'publisher' => $insert_publisher,
+                'year' => $insert_year,
+                'description' => $insert_description,
+                'imgpath' => $insert_imgpath,
+                'location' => $insert_location,
+                'a_str' => $insert_author,
+                'g_str' => $insert_genre,
+                'owner' => $insert_owner,
+                'doctype' => 'paper'            
+            ))) {
+                
+                $bookid = $id;
+            }
+
+        } else {
+            if ($id = $collection->insert(array(
+                'title' => $insert_title,
+                'isbn' => $insert_isbn,
+                'publisher' => $insert_publisher,
+                'year' => $insert_year,
+                'description' => $insert_description,
+                'imgpath' => $insert_imgpath,
+                'location' => $insert_location,
+                'a_str' => $insert_author,
+                'g_str' => $insert_genre,
+                'owner' => $insert_owner,
+                'doctype' => 'ebook',
+                'bookfile' => $insert_filename
+            ))) {
+                
+                $bookid = $id;
+            }
+
         }
     }
     
@@ -115,7 +188,7 @@ if (isset($_POST['submit'])) { // check if form was submitted
 } else {
     ?>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
 		<label class="add-new-item"><i class="fa fa-user" aria-hidden="true"></i>
             <?php echo $lang['ADD_AUTHOR_LABEL'] ?></label> <input
 			class="add-item-input" type="text" name="author" /><label
@@ -139,6 +212,18 @@ if (isset($_POST['submit'])) { // check if form was submitted
 			aria-hidden="true"></i> <?php echo $lang['ADD_LOCATION_LABEL'] ?></label>
 		<input class="add-item-input" type="text" name="location" />
 
+        <div class="book-ebook">
+            <input type="checkbox" name="isebook" id="ifebook"
+                class="showHideCheck_ebook" /><label for="ifebook"></label> <label
+                class="add-new-item"><?php echo $lang['ADD_IFEBOOK_LABEL'] ?></label>
+
+            <div class="hiddenInput_ebook">
+                <label class="add-new-item"><i class="fa fa-upload"
+                    aria-hidden="true"></i> <?php echo $lang['ADD_EBOOK_LABEL'] ?></label>
+                <input class="upload" type="file" name="files[]" />
+            </div>
+        </div>
+
 		<div class="book-lent">
 			<input type="checkbox" name="islent" id="iflent"
 				class="showHideCheck" /><label for="iflent"></label> <label
@@ -150,7 +235,7 @@ if (isset($_POST['submit'])) { // check if form was submitted
 				<input type="text" class="add-item-input" name="lentto"> <label
 					class="add-new-item"><i class="fa fa-calendar-check-o"
 					aria-hidden="true"></i> <?php echo $lang['ADD_LENTAT_LABEL'] ?></label>
-				<input type="text" class="add-item-input" name="lentat">
+				<input type="date" class="add-item-input" name="lentat">
 			</div>
 		</div>
 
