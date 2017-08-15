@@ -4,7 +4,11 @@
 </h2>
 
 <div id="item-list">   
+
 <?php
+
+require_once('lib/class.file.php');
+require_once('lib/class.upload.php');
 
 $collection = $db->table('books');
 
@@ -14,8 +18,51 @@ if (strpos($id, 'id=') !== FALSE) {
     $bookid = str_replace('id=', '', $id);
     
     $item = $collection->find($bookid);
+    $filename = $item->bookfile();
     
     if (isset($_POST['submit'])) { // check if form was submitted
+
+// =========================== UPLOAD
+
+if (isset($_FILES['files']) && $_FILES['files'] != '') {
+
+    $old_filename = $item->bookfile();
+
+    $validations = array(
+        'category' => array('ebook'), // validate only those files within this list
+        'size' => 20 // maximum of 20mb
+    );
+
+    // create new instance
+    $upload = new Upload($_FILES['files'], $validations);
+
+    // for each file
+    foreach ($upload->files as $file) {
+        if ($file->validate()) {
+            // do your thing on this file ...
+            // ...
+            // say we don't allow audio files
+            if ($file->is('audio')) $error = 'Audio not allowed';
+            else {
+                // then we move it to 'path/to/my/uploads'
+                $result = $file->put('./ebooks');
+                $error = $result ? '' : 'Error moving file';
+            }
+            
+        } else {
+            // oopps!
+            $error = $file->get_error();
+        }
+        if($file->name != '') {
+            $filename = $file->name;
+            unlink('./ebooks/'.$old_filename);
+        }
+        // echo $file->name.' - '.($error ? ' [FAILED] '.$error : ' Succeeded!');
+        // echo '<br />'; 
+    }
+}
+
+// =========================== UPLOAD
         
         $collection = $db->table('books');
         $insert_author = $_POST['author'];
@@ -27,6 +74,7 @@ if (strpos($id, 'id=') !== FALSE) {
         $insert_description = $_POST['description'];
         $insert_imgpath = $_POST['imgpath'];
         $insert_location = $_POST['location'];
+        $insert_filename = $filename;
         
         if (isset($_POST['islent'])) {
             
@@ -34,35 +82,77 @@ if (strpos($id, 'id=') !== FALSE) {
             $insert_lentto = $_POST['lentto'];
             $insert_lentat = $_POST['lentat'];
             
-            if ($id = $collection->where('id', '=', $_POST['id'])->update(array(
-                'title' => $insert_title,
-                'isbn' => $insert_isbn,
-                'publisher' => $insert_publisher,
-                'year' => $insert_year,
-                'description' => $insert_description,
-                'imgpath' => $insert_imgpath,
-                'location' => $insert_location,
-                'islent' => $insert_islent,
-                'lentto' => $insert_lentto,
-                'lentat' => $insert_lentat,
-                'a_str' => $insert_author,
-                'g_str' => $insert_genre
-            
-            ))) {}
+            if (!isset($_POST['isebook'])) {
+                if ($id = $collection->where('id', '=', $_POST['id'])->update(array(
+                    'title' => $insert_title,
+                    'isbn' => $insert_isbn,
+                    'publisher' => $insert_publisher,
+                    'year' => $insert_year,
+                    'description' => $insert_description,
+                    'imgpath' => $insert_imgpath,
+                    'location' => $insert_location,
+                    'islent' => $insert_islent,
+                    'lentto' => $insert_lentto,
+                    'lentat' => $insert_lentat,
+                    'a_str' => $insert_author,
+                    'g_str' => $insert_genre,
+                    'doctype' => 'paper'
+                 ))) {}
+            } else {
+                if ($id = $collection->where('id', '=', $_POST['id'])->update(array(
+                    'title' => $insert_title,
+                    'isbn' => $insert_isbn,
+                    'publisher' => $insert_publisher,
+                    'year' => $insert_year,
+                    'description' => $insert_description,
+                    'imgpath' => $insert_imgpath,
+                    'location' => $insert_location,
+                    'islent' => $insert_islent,
+                    'lentto' => $insert_lentto,
+                    'lentat' => $insert_lentat,
+                    'a_str' => $insert_author,
+                    'g_str' => $insert_genre,
+                    'doctype' => 'ebook',
+                    'bookfile' => $insert_filename            
+                ))) {}
+
+            }
         } else {
+
+            if (!isset($_POST['isebook'])) {
+
+                if ($id = $collection->where('id', '=', $_POST['id'])->update(array(
+                    'title' => $insert_title,
+                    'isbn' => $insert_isbn,
+                    'publisher' => $insert_publisher,
+                    'year' => $insert_year,
+                    'description' => $insert_description,
+                    'imgpath' => $insert_imgpath,
+                    'location' => $insert_location,
+                    'a_str' => $insert_author,
+                    'g_str' => $insert_genre,
+                    'doctype' => 'paper'
+                
+                ))) {}
+
+            } else {
             
-            if ($id = $collection->where('id', '=', $_POST['id'])->update(array(
-                'title' => $insert_title,
-                'isbn' => $insert_isbn,
-                'publisher' => $insert_publisher,
-                'year' => $insert_year,
-                'description' => $insert_description,
-                'imgpath' => $insert_imgpath,
-                'location' => $insert_location,
-                'a_str' => $insert_author,
-                'g_str' => $insert_genre
-            
-            ))) {}
+                if ($id = $collection->where('id', '=', $_POST['id'])->update(array(
+                    'title' => $insert_title,
+                    'isbn' => $insert_isbn,
+                    'publisher' => $insert_publisher,
+                    'year' => $insert_year,
+                    'description' => $insert_description,
+                    'imgpath' => $insert_imgpath,
+                    'location' => $insert_location,
+                    'a_str' => $insert_author,
+                    'g_str' => $insert_genre,
+                    'doctype' => 'ebook',
+                    'bookfile' => $insert_filename
+                
+                ))) {}
+
+            }
         }
         
         $insert_author = $_POST['author'];
@@ -127,11 +217,11 @@ if (strpos($id, 'id=') !== FALSE) {
             }
         }
         
-        echo '<p>Item successfully modified. <a href="display?id=' . $_POST['id'] . '">Go back to the item</a>.</p>';
+        echo '<p>' . $lang['MODIFIED_SUCCESS'] . '<a href="display?id=' . $_POST['id'] . '">' . $lang['MODIFIED_SUCCESS_REDIRECT'] . '</a>.</p>';
     } else {
         ?>
              
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
 
 		<input type="hidden" name="id" value="<?php echo $item->id() ?>" /> <label
 			class="add-new-item"><i class="fa fa-user" aria-hidden="true"></i>
@@ -168,6 +258,30 @@ if (strpos($id, 'id=') !== FALSE) {
 			aria-hidden="true"></i><?php echo $lang['ADD_LOCATION_LABEL'] ?></label>
 		<input class="add-item-input" type="text" name="location"
 			value="<?php echo $item->location() ?>" />
+
+        <div class="book-ebook">
+            <input type="checkbox" name="isebook" id="ifebook"
+                class="showHideCheck_ebook" <?php if($item->doctype() == 'ebook') { echo 'checked';} ?> /><label for="ifebook"></label> <label
+                class="add-new-item"><?php echo $lang['ADD_IFEBOOK_LABEL'] ?></label>
+
+            <div class="showLending">
+
+                <label class="add-new-item"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo $lang['EDIT_EBOOK_CURRENTFILE'] ?></label>
+                <p>
+                    <?php 
+                        if ($item->bookfile() != NULL) {
+                            echo '<a href="ebooks/'.$item->bookfile().'">'.$item->bookfile().'</a>';
+                        } else {
+                            echo $lang['EDIT_EBOOK_NOCURRENTFILE'];
+                        }
+                    ?>
+                </p>
+
+                <label class="add-new-item"><i class="fa fa-upload"
+                    aria-hidden="true"></i> <?php echo $lang['EDIT_EBOOK_ADDNEWFILE'] ?></label>
+                <input class="upload" type="file" name="files[]" />
+            </div>
+        </div>        
 
 		<div class="book-lent">
 			<input type="checkbox" name="islent" id="iflent"
