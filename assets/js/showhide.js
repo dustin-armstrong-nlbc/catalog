@@ -12,3 +12,16 @@ $(function() { // encapsulate your code into a function and pass it to jQuery
 		}
 	});
 });
+
+$(function() { // encapsulate your code into a function and pass it to jQuery
+	$(".hiddenInput_ebook").hide();
+	$(".showHideCheck_ebook").on("change", function() {
+		$this = $(this);
+		$input = $this.parent().find(".hiddenInput_ebook");
+		if ($this.is(":checked")) {
+			$input.slideDown();
+		} else {
+			$input.slideUp();
+		}
+	});
+});
