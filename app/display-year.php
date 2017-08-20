@@ -22,7 +22,7 @@ $pagination = $items->pagination();
 if ($pagination->items() == '1') {
     $wording = $lang['BOOK_SINGULAR'];
 } else {
-    $wording = $lang['BOOK_SINGULAR'];
+    $wording = $lang['BOOK_PLURAL'];
 }
 echo ($lang['DISPLAY_YEAR_OWN'] . $pagination->items() . ' ' . $wording . $lang['DISPLAY_YEAR_PUBLISHEDIN'] . $yearid . $lang['DISPLAY_YEAR_SUFFIX']);
 foreach ($items as $book) {
